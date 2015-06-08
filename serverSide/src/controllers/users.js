@@ -1,15 +1,15 @@
-var promise = require('bluebird');
-var Boom = require("boom");
-var UserModel = require('./../models/users');
-var fs = require('fs');
-
+var promise = require('bluebird'),
+ 	Boom = require("boom"),
+ 	UserModel = require('./../models/users');
+ 	config = require('../../config');
 
 // node uuid token generator and parser
 var uuid = require('node-uuid');
 
 var showAll = function(req, reply) {
-	var perPage = 10, page =  0;	
-	var search_string =  (req.query.search) ? req.query.search : '';
+	var perPage = config.pagination.perPage,
+		page =  0,	
+	    search_string =  (req.query.search) ? req.query.search : '';
 	search_string = new RegExp(search_string);	
 	UserModel.find({
 		$and :[
@@ -32,6 +32,7 @@ var showAll = function(req, reply) {
 		}	
 	});   
 }
+
 
 /**
 *

@@ -38,7 +38,20 @@ describe('blogs: models', function () {
         });
     });
 
-});
+    
+    it('should return blogs', function (done) {
+        BlogModel.find()
+        .sort({created_at: 'desc'})
+        .exec(function(err, blogs) {
+            if (err || !blogs) {
+               console.log(err)
+            } else {              
+                done()
+            }
+        });             
+    });  
+  
+ });
 
 
 

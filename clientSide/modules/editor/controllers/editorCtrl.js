@@ -10,7 +10,8 @@
     ];   
 
     function editorCtrl($scope, Restangular, BlogService) {       
-        //USING FACTORY        
+        //USING FACTORY 
+
         BlogService.getList().then(function(blogs){
             $scope.blogs = blogs[0].data ;                  
         })          
@@ -19,7 +20,6 @@
         }); 
 
         //delete blog
-
         $scope.delete = function(blog) {
             blog.status = 'deleted';
             $scope.error = '';

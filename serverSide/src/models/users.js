@@ -9,7 +9,6 @@ var validateEmail = function(email) {
 
 
 //create a model defining the schema
-
 var userSchema = new Schema({
 	name : {
 		type:String,
@@ -30,9 +29,7 @@ var userSchema = new Schema({
 		type:String,
 		required:true,
 		unique: true,
-		validate: [/*{validator:validateEmail, msg:'Please fill a valid email address'},
-					{validator: unique_mail, msg:'Email address should be unique'}*/
-					validateEmail, 'Please fill a valid email address'],
+		validate: [validateEmail, 'Please fill a valid email address'],
        	match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
 	},
 	password :  {
@@ -40,7 +37,6 @@ var userSchema = new Schema({
 		required:true
 	},
 	api_token : String,
-	// profile_pic : { data: Buffer, contentType: String },
 	profile_pic: String,
 	created_at: Date,
  	updated_at: Date
@@ -63,18 +59,14 @@ var unique_mail = function(email) {
 };
 
 userSchema.pre('save', function(next) {	
-	// get the current date
-  	var currentDate = new Date();
-  
-	 // change the updated_at field to current date
-	 this.updated_at = currentDate;
+  	var currentDate = new Date();	
+	this.updated_at = currentDate;
 
  	// if created_at doesn't exist, add to that field
 	if (!this.created_at) {
 	    this.created_at = currentDate;
 	}
 	next();
-	
 });
 
 

@@ -9,5 +9,8 @@ module.exports = {
         db: 'SimpleBlog',
         username: '',
         password: ''
+    },
+    pagination : {
+        perPage : 100
     }
 };

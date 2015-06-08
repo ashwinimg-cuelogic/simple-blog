@@ -1,7 +1,9 @@
 (function(){	
 	angular.module('app')
 	.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
-	    //$urlRouterProvider.otherwise('/blogs');
+		
+	    $urlRouterProvider.otherwise('/blogs');
+
 	    $stateProvider
 	    .state('blogs', {
 	        url:'/blogs',

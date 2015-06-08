@@ -1,10 +1,13 @@
 var mongoose = require('mongoose');
-var Boom = require("boom");
-var BlogModel = require('./../models/blogs');
+	Boom = require("boom"),
+	BlogModel = require('./../models/blogs'),
+	config = require('../../config');
 
 var showAll = function(req, reply) {
-	var perPage = 10, page =  0;	
-	var search_string =  (req.query.search) ? req.query.search : '';
+	var perPage = config.pagination.perPage, 
+		page =  0,
+	 	search_string =  (req.query.search) ? req.query.search : '';
+	
 	search_string = new RegExp(search_string);	
 	BlogModel.find({
 		$and :[

@@ -12,12 +12,12 @@
     <div class="search"> 
         <h1>Search Parameters</h1>
         <br/>
-        <label>Any: <input ng-model="search.$"></label> <br>       
+        <label>Any: <input ng-model="search.subject"></label> <br>       
     </div>
 
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="post-preview" ng-repeat="blog in blogs">
+            <div class="post-preview" ng-repeat="blog in blogs | filter:search ">
                 <a ui-sref="blogs_info({blogId:blog._id})">
                     <h2 class="post-title">
                        {{blog.subject}}
@@ -30,12 +30,6 @@
 
 
             </div>
-            <!-- Pager -->
-            <ul class="pager">
-                <li class="next">
-                    <a href="#">Older Posts &rarr;</a>
-                </li>
-            </ul>
         </div>
     </div>
 </div>

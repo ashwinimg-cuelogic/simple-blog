@@ -41,3 +41,5 @@ server.register([
 	});
 });
 
+module.exports = server;
+

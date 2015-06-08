@@ -11,7 +11,7 @@
     ];   
 
     function blogDetailCtrl($scope, Restangular, $stateParams, BlogService) {       
-        //USING FACTORY
+        
         var blogId = ($stateParams.blogId) ? $stateParams.blogId : 0;
 
         if (blogId) {
