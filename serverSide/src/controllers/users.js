@@ -33,7 +33,44 @@ var showAll = function(req, reply) {
 	});   
 }
 
+/**
+*
+* @function
+* @param : 
+* note : encryption mechanism can be added in future by modifying the newUserObject.password field
+**/ 
+
+var addUser = function(req, reply) {	
+	var newUserObject = {};	
+
+	if (req.payload.username) {
+		newUserObject.username = req.payload.username;
+	}		
+	if (req.payload.email) {
+		newUserObject.email = req.payload.email;
+	}
+	if (req.payload.password) {
+		newUserObject.password = (req.payload.password); 
+
+	}
+	if (req.payload.name) {
+		newUserObject.name = req.payload.name;	
+	}
+
+	var newUser = UserModel(newUserObject);
+	
+	newUser.save(function(err, saved) {			
+		if( err || !saved ) {			
+			reply(Boom.badImplementation(err));
+		} else {
+			reply({"success": "success", data: newUser});						
+		}
+	});
+	   
+};
+
 
 module.exports = {
-	showAll : showAll
+	showAll : showAll, 
+	addUser : addUser
 };

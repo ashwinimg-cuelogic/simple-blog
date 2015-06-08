@@ -14,6 +14,22 @@ module.exports = [
         }
        }      
     }    
-  }
+  }  ,
+  {
+    path: '/users',
+    method: 'POST',
+    config: {
+      handler: usercontroller.addUser,
+      validate: {
+        payload : {
+           name : Joi.string().alphanum().min(3).max(7).required(),
+           address : Joi.string().optional(),
+           username : Joi.string().required(),
+           email : Joi.string().email().required(),
+           password : Joi.string().required()           
+        }
+      }      
+    }    
+  },
   
 ]

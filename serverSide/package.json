@@ -4,7 +4,8 @@
   "description": "serverside in node js",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha -w",
+    "start": "node app.js"
   },
   "author": "ashwini",
   "license": "ISC",
@@ -14,7 +15,9 @@
     "hapi": "^8.6.1",
     "hapi-router": "^3.0.1",
     "joi": "^6.4.3",
+    "mocha": "^2.2.5",
     "mongoose": "^4.0.5",
-    "node-uuid": "^1.4.3"
+    "node-uuid": "^1.4.3",
+    "should": "^6.0.3"
   }
 }

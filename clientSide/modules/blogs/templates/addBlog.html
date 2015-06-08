@@ -1,0 +1,35 @@
+<div>
+    <table>       
+    <tr>
+    	<td><h3>Subject</h3></td>
+        <td>
+            <input type="text" placeholder="Add subject for the blog" ng-model="blog.subject" size="100"/>
+        </td>
+        <td></td>
+    </tr>
+    <tr>
+    	<td><h3>Description / Content  &nbsp;  </h3></td>
+        <td>
+            <textarea rows="4" cols="50" ng-model="blog.description" placeholder="add Description"></textarea>
+        </td>
+        <td></td>
+    </tr>
+
+    <tr>
+    	<td><h3>User</h3></td>
+        <td>
+            <input type="text" ng-model="blog.username"/>
+        </td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td>
+            <button type="submit" ng-click="add(blog)">Add</button>
+            <button type="submit" ng-click="reset(blog)">Reset</button>               
+        </td>
+    </tr>
+</table>
+
+
+</div>
