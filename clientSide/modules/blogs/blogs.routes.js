@@ -12,23 +12,23 @@
 	            }
 	        }	            
 	    })
+	    .state('blogs_add', {
+	        url:'/blogs/add',
+	        views :{
+	            "parent" : {
+	                templateUrl: '/modules/blogs/templates/addBlog.html',
+	                controller: 'blogAddCtrl'    
+	            }
+	        }	            
+	    })	
 	    .state('blogs_info', {
-	        url:'blogs/:blogId',
+	        url:'/blogs/:blogId',
 	        views :{
 	            "parent" : {
 	                templateUrl: '/modules/blogs/templates/blog-detail-view.html',
 	                controller: 'blogDetailCtrl'    
 	            }
 	        }	            
-	    })
-	    .state('blogs_add', {
-	        url:'/blogs/add',
-	        views :{
-	            "parent" : {
-	                templateUrl: '/modules/blogs/templates/addBlog.html',
-	                controller: 'blogActionCtrl'    
-	            }
-	        }	            
-	    })		
+	    })	    	
 	}]); 
 })()

@@ -23,7 +23,7 @@ module.exports = [
       validate: {
         payload : {
           subject : Joi.string().min(3).max(100).required(),
-          description : Joi.string().min(3).max(200).required(),
+          description : Joi.string().min(10).max(2000).required(),
           status : Joi.string().alphanum().min(3).max(10).optional(),
           user : Joi.string().optional()
         }
@@ -38,6 +38,11 @@ module.exports = [
       description: 'Get blog details',
       notes: 'Returns blog details'
     }  
+  },
+  {
+    path:"/blogs/{blogId}",
+    method : "PUT",
+    handler : blogController.updateBlog
   },
   
 ]

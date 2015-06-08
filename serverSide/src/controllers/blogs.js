@@ -8,6 +8,7 @@ var showAll = function(req, reply) {
 	search_string = new RegExp(search_string);	
 	BlogModel.find({
 		$and :[
+			{status : 'published'},
 			{$or : [
 				{subject:search_string},
 				{content:search_string}
@@ -43,6 +44,8 @@ var addBlog = function(req, reply) {
 
 	if (req.payload.status) {
 		newBlogObject.status = req.payload.status;
+	} else {
+		newBlogObject.status = 'published';
 	}
 
 	if (req.payload.user) {
@@ -76,9 +79,20 @@ var getBlogById = function(req, reply) {
 };
 
 
+var updateBlog = function(req, reply) {
+	BlogModel.findByIdAndUpdate(req.params.blogId, {$set: req.payload}, function(err, blog) {
+		if(err) {
+			reply(Boom.badImplementation(err));
+		} else {
+			reply([{"success": "success", data: "blog:"+ blog.status+" successfully deleted"}]);
+		}		
+    });
+}
+
 
 module.exports = {
 	showAll    : showAll,
 	addBlog    : addBlog,
-	getBlogById: getBlogById
+	getBlogById: getBlogById,
+	updateBlog : updateBlog
 };
