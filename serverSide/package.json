@@ -1,0 +1,20 @@
+{
+  "name": "serverSide",
+  "version": "1.0.0",
+  "description": "serverside in node js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ashwini",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^2.9.27",
+    "boom": "^2.7.2",
+    "hapi": "^8.6.1",
+    "hapi-router": "^3.0.1",
+    "joi": "^6.4.3",
+    "mongoose": "^4.0.5",
+    "node-uuid": "^1.4.3"
+  }
+}
