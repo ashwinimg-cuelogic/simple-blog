@@ -17,9 +17,6 @@ var web = server.connection({
 			relativeTo : Path.join(__dirname, 'src/public/')
 		},
 		cors : true
-		// cors : {
-		// 	origin : ['http://localhost'] //list of Access-Control-Allow-Origin
-		// }
 	}
 });
 

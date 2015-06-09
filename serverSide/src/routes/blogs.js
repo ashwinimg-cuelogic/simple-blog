@@ -9,8 +9,8 @@ module.exports = [
       handler: blogController.showAll,
       validate: {
         query : {
-           name : Joi.string().alphanum().min(3).max(7).optional(),
-           search : Joi.string().alphanum().min(3).max(7).optional()
+           name : Joi.string().alphanum().min(3).max(20).optional(),
+           search : Joi.string().alphanum().min(3).max(100).optional()
         }
        }      
     }    

@@ -1,7 +1,7 @@
 describe('simple-blog App', function() {
 
 	beforeEach(function() {
-    	browser.get('http://localhost:8080/#/blogs');
+    	browser.get(browser.baseUrl+'#/blogs');
   	});
 
 	it('should have a title', function() {		
@@ -11,15 +11,14 @@ describe('simple-blog App', function() {
 	it('links should work and redirect to current page', function() {  
 			
 		element(by.id('home')).click();
-		expect(browser.getCurrentUrl()).toEqual("http://localhost:8080/#/blogs");
-
-		browser.get('http://localhost:8080/#/blogs');  	
+		expect(browser.getCurrentUrl()).toEqual(browser.baseUrl+"#/blogs");
+		 	
 		element(by.id('editor-dashboard')).click();
-		expect(browser.getCurrentUrl()).toEqual("http://localhost:8080/#/editor/dashboard");
+		expect(browser.getCurrentUrl()).toEqual(browser.baseUrl+"#/editor/dashboard");
 
 	});
 
-	it('each blog link should work properly. by taking it to detailed view of the blog', function(){
+	it('each blog link should work properly. by taking it to detailed view of the blog', function() {
 		
 		random_blog = element.all(by.css('.post-preview a')).get(5);
 		href_link = random_blog.getAttribute('href');		

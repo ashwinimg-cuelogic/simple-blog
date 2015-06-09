@@ -1,9 +1,10 @@
 var Mongoose = require('mongoose'),
-    config = require('./config');
+    config = require('./config'),
+    db;
 
 Mongoose.connect('mongodb://' + config.database.host + '/' + config.database.db);
 
-var db = Mongoose.connection;
+db = Mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error'));
 

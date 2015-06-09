@@ -9,8 +9,7 @@
         'BlogService'   
     ];   
 
-    function editorCtrl($scope, Restangular, BlogService) {       
-        //USING FACTORY 
+    function editorCtrl($scope, Restangular, BlogService) { 
 
         BlogService.getList().then(function(blogs){
             $scope.blogs = blogs[0].data ;                  
@@ -19,7 +18,6 @@
             console.log(err);
         }); 
 
-        //delete blog
         $scope.delete = function(blog) {
             blog.status = 'deleted';
             $scope.error = '';
@@ -36,7 +34,6 @@
                 delete $scope.blogs.splice(whatIndex, 1);
             });
         }
-
     };
 
 })();
