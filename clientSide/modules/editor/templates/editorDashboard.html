@@ -3,7 +3,7 @@
 
     <div class="row">
         <div lass="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <a ui-sref='blogs_add'>Add New blog</a>
+            <a ui-sref='blogs_add' id="add-blog">Add New blog</a>
 
             <p class="error"> {{error}}</p>
         </div>
@@ -24,9 +24,11 @@
                     </h2>                        
                 </a>
                 <p class="post-meta">Posted by <a href="#">{{blog.user.username}} - {{blog.user.email}}</a> {{blog.created_date || date}}</p>
-                <hr>
+                
 
-                <button type="submit" ng-click="delete(blog)">Delete</button>
+                <button type="submit" class="delete-blog" ng-click="delete(blog)">Delete</button>
+
+                <hr>
 
 
             </div>
