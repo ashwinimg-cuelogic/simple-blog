@@ -1,16 +1,23 @@
 var promise = require('bluebird'),
  	Boom = require("boom"),
- 	UserModel = require('./../models/users');
- 	config = require('../../config');
+ 	UserModel = require('./../models/users'),
+ 	config = require('../../config'),
+ 	uuid = require('node-uuid');
 
-// node uuid token generator and parser
-var uuid = require('node-uuid');
+/**
+*
+* @function
+* @param : 
+* description : will list down all the users
+**/ 
 
 var showAll = function(req, reply) {
 	var perPage = config.pagination.perPage,
 		page =  0,	
 	    search_string =  (req.query.search) ? req.query.search : '';
-	search_string = new RegExp(search_string);	
+
+	search_string =  new RegExp(search_string);	
+
 	UserModel.find({
 		$and :[
 			{$or : [
@@ -42,29 +49,31 @@ var showAll = function(req, reply) {
 **/ 
 
 var addUser = function(req, reply) {	
-	var newUserObject = {};	
+	var UserObject = {};	
 
 	if (req.payload.username) {
-		newUserObject.username = req.payload.username;
-	}		
+		UserObject.username = req.payload.username;
+	}
+
 	if (req.payload.email) {
-		newUserObject.email = req.payload.email;
+		UserObject.email = req.payload.email;
 	}
+
 	if (req.payload.password) {
-		newUserObject.password = (req.payload.password); 
-
+		UserObject.password = (req.payload.password); 
 	}
+
 	if (req.payload.name) {
-		newUserObject.name = req.payload.name;	
+		UserObject.name = req.payload.name;	
 	}
 
-	var newUser = UserModel(newUserObject);
+	var User = UserModel(UserObject);
 	
-	newUser.save(function(err, saved) {			
+	User.save(function(err, saved) {			
 		if( err || !saved ) {			
 			reply(Boom.badImplementation(err));
 		} else {
-			reply({"success": "success", data: newUser});						
+			reply({"success": "success", data: User});						
 		}
 	});
 	   

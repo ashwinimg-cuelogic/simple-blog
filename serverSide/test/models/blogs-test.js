@@ -3,7 +3,6 @@
 // import the moongoose helper utilities
 var app = require('../../app');
 var should = require('should');
-var supertest = require("supertest");
 var assert = require("assert");
 
 

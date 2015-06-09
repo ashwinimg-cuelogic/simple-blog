@@ -9,6 +9,7 @@ var showAll = function(req, reply) {
 	 	search_string =  (req.query.search) ? req.query.search : '';
 	
 	search_string = new RegExp(search_string);	
+
 	BlogModel.find({
 		$and :[
 			{status : 'published'},
@@ -36,32 +37,32 @@ var showAll = function(req, reply) {
 
 
 var addBlog = function(req, reply) {
-	var newBlogObject = {};
+	var BlogObject = {};
 	if (req.payload.subject){
-		newBlogObject.subject = req.payload.subject;
+		BlogObject.subject = req.payload.subject;
 	}
 
 	if (req.payload.description) {
-		newBlogObject.description = req.payload.description;
+		BlogObject.description = req.payload.description;
 	}
 
 	if (req.payload.status) {
-		newBlogObject.status = req.payload.status;
+		BlogObject.status = req.payload.status;
 	} else {
-		newBlogObject.status = 'published';
+		BlogObject.status = 'published';
 	}
 
 	if (req.payload.user) {
-		newBlogObject.user = req.payload.user;	
+		BlogObject.user = req.payload.user;	
 	}
 
-	var newBlog = BlogModel(newBlogObject);
+	var Blog = BlogModel(BlogObject);
 
-	newBlog.save(function(err, saved) {			
+	Blog.save(function(err, saved) {			
 		if( err || !saved ) {			
 			reply(Boom.badImplementation(err));
 		} else {
-			reply({"success": "success", data: newBlog});						
+			reply({"success": "success", data: Blog});						
 		}
 	});
 };

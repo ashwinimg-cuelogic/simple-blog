@@ -69,8 +69,6 @@ userSchema.pre('save', function(next) {
 	next();
 });
 
-
-
 User.on('index', function(err) {
   if (err) {   
     console.error(err);   
