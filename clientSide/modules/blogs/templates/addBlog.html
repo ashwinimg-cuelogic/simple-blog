@@ -1,34 +1,37 @@
-<div>
-	<form name="add_blog">
-	    <table>          
-		    <tr>
-		    	<td><h3>Subject</h3></td>
-		        <td>
-		            <input type="text" required placeholder="Add subject for the blog" ng-model="blog.subject" size="100"/>
-		        </td>
-		        <td></td>
-		    </tr>
-		    <tr>
-		    	<td><h3>Description / Content  &nbsp;  </h3></td>
-		        <td>
-		            <textarea rows="4" cols="50" required ng-model="blog.description" placeholder="add Description"></textarea>
-		        </td>
-		        <td></td>
-		    </tr>	    
+<div class="container">
+	<form name="add_blog" no-validate ng-submit="add(blog)">
+	    <div class="form-group"
+             ng-class="{'has-error' : add_blog.subject.$invalid && add_blog.subject.$touched}">
+            <label>Subject</label>
+            <input class="form-control" type="text" ng-required="true"
+                   placeholder="Add subject for the blog"
+                   ng-model="blog.subject" name="subject" size="100"/>
+            <p class="error validationerror"
+               ng-show="add_blog.subject.$invalid && add_blog.subject.$touched">
+                Must be valid subject!
+            </p>
+        </div>
+        <div class="form-group"
+             ng-class="{'has-error' : add_blog.description.$invalid && add_blog.description.$touched}"
+             >
+            <label>Description / Content  &nbsp; </label>
+            <textarea class="form-control" rows="4" cols="50" ng-required="true"
+            ng-model="blog.description" name="description"
+            placeholder="add Description"></textarea>
+            <p class="error validationerror"
+               ng-show="add_blog.description.$invalid && add_blog.description.$touched">
+                Please enter valid description
+            </p>
+        </div>
+        <div class="error" ng-show="error">
+            <p>{{error}}</p>
+        </div>
 
-		    <tr class="error">
-		    	<td>{{error}}</td>
-		    </tr>
-
-		    <tr></tr>
-
-		    <tr>
-		        <td>
-		            <button  ng-disabled="add_blog.$invalid"  ng-click="add(blog)">Add</button>
-		            <button type="button" ng-click="reset(blog)">Reset</button>               
-		        </td>
-		    </tr>
-		    
-		</table>
+        <div class="for-group">
+            <div class="form-group">
+                <button  ng-disabled="add_blog.$invalid" class="btn btn-primary">Add</button>
+                <button type="button" class="btn btn-primary" ng-click="reset(blog)">Reset</button>
+            </div>
+        </div>
 	</form>
 </div>
