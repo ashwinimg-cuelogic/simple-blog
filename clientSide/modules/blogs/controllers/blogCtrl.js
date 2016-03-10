@@ -4,12 +4,11 @@
     .controller('blogCtrl', blogCtrl);
 
     blogCtrl.$inject = [
-        '$scope', 
-        'Restangular',
+        '$scope',
         'BlogService'     
     ];   
 
-    function blogCtrl($scope, Restangular, BlogService) {      
+    function blogCtrl($scope, BlogService) {
       
         BlogService.getList().then(function(blogs){
             $scope.blogs = blogs[0].data;        

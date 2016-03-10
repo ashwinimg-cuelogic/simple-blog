@@ -4,13 +4,12 @@
     .controller('blogDetailCtrl', blogDetailCtrl);
 
     blogDetailCtrl.$inject = [
-        '$scope', 
-        'Restangular',
+        '$scope',
         '$stateParams',
         'BlogService'     
     ];   
 
-    function blogDetailCtrl($scope, Restangular, $stateParams, BlogService) {       
+    function blogDetailCtrl($scope, $stateParams, BlogService) {
         
         var blogId = ($stateParams.blogId) ? $stateParams.blogId : 0;
 

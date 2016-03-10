@@ -6,12 +6,11 @@
     blogAddCtrl.$inject = [
         '$scope', 
         '$state',
-        'Restangular',
         '$stateParams',
         'BlogService'     
     ];   
 
-    function blogAddCtrl($scope, $state, Restangular, $stateParams, BlogService) {       
+    function blogAddCtrl($scope, $state, $stateParams, BlogService) {
              
         $scope.add = function(blog) {
             $scope.error = '';
