@@ -28,13 +28,26 @@ server.register([
 	options : {
 		routes : 'src/routes/*.js'
 	}
-}
-], function (err) {
+},
+{
+    register: require('good'),
+    options: {
+        reporters: [{
+            reporter: require('good-console'),
+            events: {
+                response: '*',
+                log: '*'
+            }
+        }]
+    }
+
+}], function (err) {
 	if (err) {
 		throw err;
 	}
 	server.start(function(){
-		console.log("server is running at"+ server.info.uri);
+		server.log("server is running at"+ server.info.uri);
+        server.log('info', 'Server running at: ' + server.info.uri);
 	});
 });
 

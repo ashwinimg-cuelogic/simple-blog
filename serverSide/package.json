@@ -12,6 +12,8 @@
   "dependencies": {
     "bluebird": "^2.9.27",
     "boom": "^2.7.2",
+    "good": "^6.6.0",
+    "good-console": "^5.3.1",
     "hapi": "^8.6.1",
     "hapi-router": "^3.0.1",
     "inert": "^3.2.0",
