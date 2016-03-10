@@ -12,11 +12,12 @@ var promise = require('bluebird'),
 **/ 
 
 var showAll = function(req, reply) {
+    //reply.file('hello.html');
 	var perPage = config.pagination.perPage,
-		page =  0,	
+		page =  0,
 	    search_string =  (req.query.search) ? req.query.search : '';
 
-	search_string =  new RegExp(search_string);	
+	search_string =  new RegExp(search_string);
 
 	UserModel.find({
 		$and :[
@@ -25,7 +26,7 @@ var showAll = function(req, reply) {
 				{email:search_string},
 				{username:search_string}
 			]}
-		]		
+		]
 	})
 	.limit(perPage)
 	.skip(perPage * page)
@@ -34,10 +35,10 @@ var showAll = function(req, reply) {
 		if (err || !users) {
 			reply(err);
 		} else {
-			data = [{"success": "success", data: users }];	
+			data = [{"success": "success", data: users }];
 			reply(data);
-		}	
-	});   
+		}
+	});
 }
 
 
