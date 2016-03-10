@@ -62,7 +62,7 @@ var addBlog = function(req, reply) {
 		if( err || !saved ) {			
 			reply(Boom.badImplementation(err));
 		} else {
-			reply({"success": "success", data: Blog});						
+			reply([{"success": "success", data: Blog}]);
 		}
 	});
 };

@@ -21,7 +21,7 @@ angular.module('app', ['restangular','ui.router'])
     //})
 
     RestangularProvider.setResponseExtractor(function(response, operation) {
-        return typeof(response.data !== "undefined") ? response.data : response[0].data;
+        return response[0].data;
     });
 
 }])
