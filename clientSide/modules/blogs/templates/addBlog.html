@@ -5,22 +5,39 @@
             <label>Subject</label>
             <input class="form-control" type="text" ng-required="true"
                    placeholder="Add subject for the blog"
-                   ng-model="blog.subject" name="subject" size="100"/>
+                   ng-model="blog.subject" name="subject" size="100" ng-minlength="3" ng-maxlength="20"/>
             <p class="error validationerror"
-               ng-show="add_blog.subject.$invalid && add_blog.subject.$touched">
-                Must be valid subject!
+               ng-show="add_blog.subject.$error.required && add_blog.subject.$touched">
+                Please enter subject
+            </p>
+            <p class="error validationerror"
+               ng-show="add_blog.subject.$error.minlength && add_blog.subject.$touched">
+                Subject is too short!
+            </p>
+            <p class="error validationerror"
+               ng-show="add_blog.subject.$error.maxlength && add_blog.subject.$touched">
+                Subject is too long!
             </p>
         </div>
         <div class="form-group"
              ng-class="{'has-error' : add_blog.description.$invalid && add_blog.description.$touched}"
              >
             <label>Description / Content  &nbsp; </label>
-            <textarea class="form-control" rows="4" cols="50" ng-required="true"
+            <textarea class="form-control" rows="4" cols="50" ng-required="true" ng-minlength="10"
+            ng-maxlength="2000"
             ng-model="blog.description" name="description"
             placeholder="add Description"></textarea>
             <p class="error validationerror"
-               ng-show="add_blog.description.$invalid && add_blog.description.$touched">
+               ng-show="add_blog.description.$error.required && add_blog.description.$touched">
                 Please enter valid description
+            </p>
+            <p class="error validationerror"
+               ng-show="add_blog.description.$error.minlength && add_blog.description.$touched">
+                Description is too short!
+            </p>
+            <p class="error validationerror"
+               ng-show="add_blog.description.$error.maxlength && add_blog.description.$touched">
+                Description is too long!
             </p>
         </div>
         <div class="error" ng-show="error">
