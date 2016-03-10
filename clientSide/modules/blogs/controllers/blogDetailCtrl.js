@@ -18,7 +18,7 @@
             .one(blogId)
             .get()
             .then(function(blog) {
-                $scope.blog = blog[0].data ;        
+                $scope.blog = blog ;
             })          
             .catch(function(err){
                 console.log(err);

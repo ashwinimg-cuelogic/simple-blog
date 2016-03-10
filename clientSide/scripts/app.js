@@ -11,7 +11,7 @@ angular.module('app', ['restangular','ui.router'])
     //one can even set the api-key which is sent in every request
     //RestangularProvider.setDefaultRequestParams({ apiKey: '4f847ad3e4b08a2eed5f3b54' });
 
-    //RestangularProvider.setRequestInterceptor(function(elem, operation, what) {
+    //RestangularProvider.addRequestInterceptor(function(elem, operation, what) {
     //
     //    if (operation === 'put') {
     //        elem._id = undefined;
@@ -19,5 +19,9 @@ angular.module('app', ['restangular','ui.router'])
     //    }
     //    return elem;
     //})
+
+    RestangularProvider.setResponseExtractor(function(response, operation) {
+        return response[0].data;
+    });
 
 }])
